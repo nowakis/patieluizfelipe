@@ -137,7 +137,7 @@
 			//DISABLE SUBMIT BUTTON
 			var submit_value = $('input[type="submit"]#submitButton').val();
 			$('input[type="submit"]#submitButton').prop('disabled', true);
-			$('input[type="submit"]#submitButton').val('SENDING ...');
+			$('input[type="submit"]#submitButton').val('ENVIANDO...');
 			
 			//START POST ACTION
             $.post(action_url, post_data, function(response){  
@@ -153,7 +153,7 @@
 				//ELSE IF NO ERROR
 				else
 				{
-				    output = '<div class="bg-success">'+response.text+'</div>';
+				    output = '<div class="bg-success">Obrigado :)</div>';
 					
 					//RESET INPUT VALUE
 					$("#" + form_id).find("input[type='text']").val('');
