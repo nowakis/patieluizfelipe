@@ -36,8 +36,7 @@
 			//DEFINE OBJECT VARIABLE FOR SAVE ALL INPUT VALUE AND DATA-REQUIRED MESSAGE
 			var post_data = {};			
 			/*var post_data1 = { inputname: $('#inputname').val()};*/
-			
-						
+									
 					
 			//LOOPING TO SAVE ALL INPUT VALUE, DATA-REQUIRED MESSAGE, AND ADD/REMOVE HAS-ERROR CLASS
 			$.each(ajax_input_element , function(index, element){
@@ -132,7 +131,7 @@
 			post_data["all_error_required"] = all_err;
 			
 			//DEBUG POST DATA	
-			/*console.log ("json " + JSON.stringify(post_data));*/
+			console.log ("json " + JSON.stringify(post_data));
 			
 			//DISABLE SUBMIT BUTTON
 			var submit_value = $('input[type="submit"]#submitButton').val();
@@ -140,48 +139,55 @@
 			$('input[type="submit"]#submitButton').val('ENVIANDO...');
 			
 			//START POST ACTION
-            $.post(action_url, post_data, function(response){  
-			
-                //DEFINE OUTPUT MESSAGE VARIABLE
-				var output = "";
-				
-				//IF RESPONSE ERROR
-				if(response.type == 'error')
-				{
-					output = '<div class="bg-danger">'+response.text+'</div>';
-				}
-				//ELSE IF NO ERROR
-				else
-				{
-				    output = '<div class="bg-success">Obrigado :)</div>';
+
+			$.ajax({
+			 	url: action_url,
+			 	type: "POST",
+			 	data: JSON.stringify({data:"test"}),
+			 	contentType: "application/json; charset=utf-8",
+			 	dataType:"json",
+			 	success: function(response){
+	 				//DEFINE OUTPUT MESSAGE VARIABLE
+					var output = "";
 					
-					//RESET INPUT VALUE
-					$("#" + form_id).find("input[type='text']").val('');
-					$("#" + form_id).find("input[type='email']").val('');
-					$("#" + form_id).find("textarea").val('');
-					$("#" + form_id).find("input[type='radio']").prop("checked", false);
-					$("#" + form_id).find($('.ajax-radio .btn')).removeClass('active-icon active');
-					$("#" + form_id).find("input[type='checkbox']").attr('checked', false);
-					$("#" + form_id).find($('.ajax-checkbox .btn')).removeClass('active-icon active');
-					$("#" + form_id).find("select").prop('selectedIndex',0);
-					$("#" + form_id).find("select[multiple]").prop('selectedIndex',-1);	
-							
-				}				
-				
-				//ENABLE SUBMIT BUTTON
-				$('input[type="submit"]#submitButton').prop('disabled', false);
-				$('input[type="submit"]#submitButton').val(submit_value);		
+					//IF RESPONSE ERROR
+					if(response.type == 'error')
+					{
+						output = '<div class="bg-danger">'+response.text+'</div>';
+					}
+					//ELSE IF NO ERROR
+					else
+					{
+					    output = '<div class="bg-success">Obrigado :)</div>';
+						
+						//RESET INPUT VALUE
+						$("#" + form_id).find("input[type='text']").val('');
+						$("#" + form_id).find("input[type='email']").val('');
+						$("#" + form_id).find("textarea").val('');
+						$("#" + form_id).find("input[type='radio']").prop("checked", false);
+						$("#" + form_id).find($('.ajax-radio .btn')).removeClass('active-icon active');
+						$("#" + form_id).find("input[type='checkbox']").attr('checked', false);
+						$("#" + form_id).find($('.ajax-checkbox .btn')).removeClass('active-icon active');
+						$("#" + form_id).find("select").prop('selectedIndex',0);
+						$("#" + form_id).find("select[multiple]").prop('selectedIndex',-1);	
+								
+					}				
 					
-				//OUTPUT MESSAGE
-				$(settings.messageWrapper).hide().html(output).slideDown();
-				
-				if (settings.scrollAfterSubmit){
-					$('html, body').animate({
-        				scrollTop: $(settings.messageWrapper).offset().top - 200
-    				}, 1000);	
-				}
-				
-            }, 'json');
+					//ENABLE SUBMIT BUTTON
+					$('input[type="submit"]#submitButton').prop('disabled', false);
+					$('input[type="submit"]#submitButton').val(submit_value);		
+						
+					//OUTPUT MESSAGE
+					$(settings.messageWrapper).hide().html(output).slideDown();
+					
+					if (settings.scrollAfterSubmit){
+						$('html, body').animate({
+	        				scrollTop: $(settings.messageWrapper).offset().top - 200
+	    				}, 1000);	
+					}			 		
+			 	}
+			})
+
 		});
 		
 		

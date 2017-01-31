@@ -336,7 +336,7 @@ $(document).ready(function() {
 	// 07. COUNTDOWN
 	//===================================================================================
 	var theday = new Date();
-	theday = new Date(2015, 7, 12);
+	theday = new Date(2017, 3, 21);
 	$('#countdown').countdown({until: theday, format: 'WDHMS'});
 	$('#countdown').countdown($.countdown.regionalOptions['custom-label']); 
 		 
@@ -348,7 +348,7 @@ $(document).ready(function() {
 		e.preventDefault()
 		$("#nav-menu").toggleClass("open");
 	});
-	
+
 	// Hide Menu After Click It. Will be used on onepage version. 
 	$("#nav-menu li a").click(function(){
 		 if ($(this).attr("href") !== "#") {
