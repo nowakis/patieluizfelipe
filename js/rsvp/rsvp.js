@@ -143,7 +143,7 @@
 			$.ajax({
 			 	url: action_url,
 			 	type: "POST",
-			 	data: JSON.stringify({data:"test"}),
+			 	data: JSON.stringify(post_data),
 			 	contentType: "application/json; charset=utf-8",
 			 	dataType:"json",
 			 	success: function(response){
