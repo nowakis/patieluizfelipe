@@ -57,7 +57,7 @@
 					if (checked_checkbox.length > 0 || !($(this).attr("data-required")) ) {		
 						$(this).removeClass("has-error");
 						post_data[element.id] = checked_checkbox.map(function(i, elem) { return $(this).val(); }).get().join( ", " );
-						post_data[element.id + "_label"] = element.getAttribute("data-output-label");
+						//post_data[element.id + "_label"] = element.getAttribute("data-output-label");
        		 		}
 					else 
 					{
@@ -90,7 +90,7 @@
 					if (checked_radio.length > 0 || !($(this).attr("data-required"))) {
 						$(this).removeClass("has-error");
 						post_data[element.id] = radio_value;
-						post_data[element.id + "_label"] = element.getAttribute("data-output-label");
+						//post_data[element.id + "_label"] = element.getAttribute("data-output-label");
        		 		}
 					else
 					{
@@ -118,17 +118,17 @@
 					{
 						$(this).closest("div").removeClass("has-error");
 						post_data[element.id] = this_input_value;		
-						post_data[element.id + "_label"] = element.getAttribute("data-output-label");					
+						//post_data[element.id + "_label"] = element.getAttribute("data-output-label");					
 					}
 				}
 			});
 			
 			
 			//SAVE ALL ID TO POST DATA	
-			post_data["all_input_id"] = all_id;
+			//post_data["all_input_id"] = all_id;
 			
 			//SAVE ALL ERROR REQUIRED TO POST DATA	
-			post_data["all_error_required"] = all_err;
+			//post_data["all_error_required"] = all_err;
 			
 			//DEBUG POST DATA	
 			console.log ("json " + JSON.stringify(post_data));
